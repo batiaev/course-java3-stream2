@@ -64,7 +64,6 @@ class TestThreadClass implements Runnable {
         Thread t1 = new Thread(mpObj);
         t1.start();
         t1.setDaemon(true);
-        t1.wait();
     }
 }
 
