@@ -8,7 +8,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
-@FirstAnnotation
+@FirstAnnotation(priority = 15)
 @Slf4j
 @SuppressWarnings("asd")
 @WebService
@@ -22,6 +22,7 @@ public class Lesson7 {
         Method[] methods = aClass.getMethods();
         Modifier.isStatic(methods[0].getModifiers());
         int anAbstract = Modifier.ABSTRACT;
+//        log.info();
         System.out.println(
                 aClass.isAnnotation() ? "@interface " : "class " + aClass.getSimpleName());
 
