@@ -15,6 +15,7 @@
 
     <modules>
         <module>stream1</module>
+        <module>stream2</module>
     </modules>
 
     <properties>
