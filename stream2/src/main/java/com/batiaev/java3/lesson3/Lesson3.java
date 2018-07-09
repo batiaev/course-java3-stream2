@@ -1,12 +1,22 @@
 package com.batiaev.java3.lesson3;
 
 import java.io.*;
+import java.nio.file.Path;
 import java.util.Scanner;
 
 public class Lesson3 {
     public static void main(String[] args) {
+//        File testFile = new File("/Users/anton/1.txt");
+//        Path path = testFile.toPath();
+//        try {
+//            Scanner scanner = new Scanner(new FileInputStream(testFile));
+//            String line = scanner.nextLine();
+//            System.out.println("Line contain: " + line);
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        }
 //        file();
-        byteArrayStream();
+//        byteArrayStream();
 //        fileStream();
 //        pipedStream();
 //        sequenceStream();
@@ -17,6 +27,7 @@ public class Lesson3 {
 
     private static void file() {
 //        File file = new File("/etc");
+//        file.mkdir();
 //        System.out.format("%s, is directory: %s",
 //                file.getAbsoluteFile(), file.isDirectory());
 //
@@ -27,13 +38,13 @@ public class Lesson3 {
 
         //example 2
 
-        File test = new File("~/./././test.txt");
-        System.out.println(test.getAbsolutePath());
-        try {
-            System.out.println(test.getCanonicalPath());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        File test = new File("~/./././test.txt");
+//        System.out.println(test.getAbsolutePath());
+//        try {
+//            System.out.println(test.getCanonicalPath());
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 
     private static void objectStream() {
@@ -41,6 +52,9 @@ public class Lesson3 {
             ByteArrayOutputStream os = new ByteArrayOutputStream();
             ObjectOutputStream oos = new ObjectOutputStream(os);
             Integer integerSave = new Integer(155);
+            //TODO
+//            oos.
+
             oos.writeObject(integerSave);
             byte[] arr = os.toByteArray();
             os.close();
@@ -77,10 +91,14 @@ public class Lesson3 {
     private static void byteArrayStream() {
         byte[] arr = {100, 25, 50};
         ByteArrayInputStream in = new ByteArrayInputStream(arr);
+        process(in);
         int x;
         while ((x = in.read()) != -1) {
             System.out.print(x + " ");
         }
+    }
+    private static void process(final InputStream stream) {
+//        stream.read();
     }
 
     private static void fileStream() {
@@ -88,8 +106,10 @@ public class Lesson3 {
         byte[] br = new byte[20];
 
         FileInputStream in = null;
+
         try (FileOutputStream out = new FileOutputStream("12345.txt");
              FileInputStream into = new FileInputStream("12345.txt")) {
+            int read = into.read();
             out.write(bw);
         } catch (IOException e) {
             e.printStackTrace();
@@ -120,6 +140,7 @@ public class Lesson3 {
             in = new PipedInputStream();
             out = new PipedOutputStream();
             out.connect(in);
+            out.flush();
             for (int i = 0; i < 100; i++) {
                 out.write(i);
             }
@@ -153,6 +174,19 @@ public class Lesson3 {
             in1 = new FileInputStream("1.txt");
             in2 = new FileInputStream("2.txt");
             seq = new SequenceInputStream(in1, in2);
+
+
+            try (DataInputStream dataInputStream = new DataInputStream(
+                    new BufferedInputStream(
+                            seq))) {
+                float readFloat = dataInputStream.readFloat();
+            } catch (Exception e) {
+
+            }
+
+
+
+
             out = new FileOutputStream("3.txt");
             int rb = seq.read();
             while (rb != -1) {
@@ -177,8 +211,10 @@ public class Lesson3 {
         try {
             OutputStream out = new BufferedOutputStream(
                     new FileOutputStream("file.txt"));
+
             for (int i = 0; i < 1000000; i++)
                 out.write(i);
+            out.flush();
             out.close();
 
             InputStream in = new BufferedInputStream(

@@ -1,4 +1,6 @@
-package com.batiaev.java3.lesson2.homework;
+package com.batiaev.java3.lesson2;
+
+import org.sqlite.JDBC;
 
 import java.sql.*;
 import java.util.Scanner;
@@ -9,7 +11,7 @@ public class Homework {
     private Statement stmt;
 
     private static final String DB_NAME = "product.db";
-    
+
     public static void main(String[] args) {
         Homework db = new Homework();
         Scanner in = new Scanner(System.in);
@@ -19,10 +21,15 @@ public class Homework {
             String[] data = str.split(" ");
             switch (data[0]) {
                 case "/цена":
-                    db.getProduct(data[1]);
+                    if (data.length > 1)
+                        db.getProduct(data[1]);
+                    else {
+                        System.out.println("Invalid command!");
+                    }
                     break;
                 case "/сменитьцену":
-                    db.updatePrice(data[1], data[2]);
+                    if (data.length > 2)
+                        db.updatePrice(data[1], data[2]);
                     break;
                 case "/товарыпоцене":
                     db.getProductsByCost(data[1], data[2]);
@@ -38,12 +45,11 @@ public class Homework {
 
     public Homework() {
         try {
-            Class.forName("org.sqlite.JDBC");
-            connect = DriverManager.getConnection("jdbc:sqlite:" + DB_NAME);
+            connect = DriverManager.getConnection(JDBC.PREFIX + DB_NAME);
             stmt = connect.createStatement();
             clearTable();
             insertData();
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -111,9 +117,8 @@ public class Homework {
         }
     }
 
-    void getProduct(String str) {
-        String query = String.format(
-                "SELECT cost FROM product WHERE title = '%s';", str);
+    void getProduct(String productName) {
+        String query = String.format("SELECT cost FROM product WHERE title = '%s';", productName);
         try {
             ResultSet result = stmt.executeQuery(query);
             if (result != null) {
