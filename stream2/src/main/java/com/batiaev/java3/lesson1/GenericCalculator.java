@@ -1,7 +1,5 @@
 package com.batiaev.java3.lesson1;
 
-import com.sun.xml.internal.ws.Closeable;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
