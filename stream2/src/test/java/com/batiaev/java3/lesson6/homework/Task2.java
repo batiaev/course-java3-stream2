@@ -23,6 +23,17 @@ public class Task2 {
         log.info("В массиве не только 1 и 4");
     }
 
+    @Test(timeout = 1000)
+    public void testTask2LongWait() {
+        int[] data = new int[900000];
+        data[0] = 0;
+        data[1] = 1;
+        for (int i = 2; i < data.length; i++) {
+            data[i] = data[i - 2] + data[i - 1];
+        }
+        Assert.assertFalse("Ошибка", Homework6.task2(data));
+    }
+
     @Test
     public void testTask2Contain1() {
         Assert.assertFalse("В массиве есть 1", Homework6.task2(new int[]{4, 4, 4, 4, 4}));

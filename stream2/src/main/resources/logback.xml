@@ -73,7 +73,7 @@
 
     <logger name="com.batiaev.java3.lesson2" level="ERROR"/>
 
-    <logger name="com.batiaev.java3.lesson6" level="DEBUG" additivity="false">
+    <logger name="com.batiaev.java3.com.batiaev.java3.lesson6" level="DEBUG" additivity="false">
         <appender-ref ref="DEBUG_FILE"/>
         <appender-ref ref="STDOUT"/>
         <appender-ref ref="FILE"/>
