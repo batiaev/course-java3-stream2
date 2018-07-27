@@ -20,9 +20,9 @@ public class CalcTests extends AnnotationProcessor {
         System.out.println("Тестируем умножение...");
     }
 
-    @Test(priority = 198)
+    @Test(priority = 8)
     @SuppressWarnings("unused")
-    public void divTest() {
+    private void divTest() {
         System.out.println("Тестируем деление...");
     }
 
