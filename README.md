@@ -1,7 +1,6 @@
 # Курс Java. Уровень 3
 - Ссылка на курс - https://geekbrains.ru/courses/15
-- Ссылка на поток 1 (2018-05-24) - https://geekbrains.ru/streams/4282
-- Ссылка на поток 2 (2018-07-02) - https://geekbrains.ru/streams/4472
+- Ссылка на поток (2018-07-02) - https://geekbrains.ru/streams/4472
 
 ## Занятия
 
