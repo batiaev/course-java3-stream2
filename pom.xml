@@ -4,12 +4,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.batiaev.java3</groupId>
-    <artifactId>java3</artifactId>
-    <packaging>pom</packaging>
+    <artifactId>java3-stream2</artifactId>
+    <name>Java 3 :: Stream 2 (2018-07-02)</name>
+    <packaging>jar</packaging>
     <version>0.0.1-SNAPSHOT</version>
 
     <scm>
-        <connection>scm:git:https://github.com/Batiaev/course-java-3.git</connection>
+        <connection>scm:git:https://github.com/batiaev/course-java3-stream2.git</connection>
         <tag>HEAD</tag>
     </scm>
 
@@ -42,7 +43,7 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.12</version>
-            <scope>test</scope>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
